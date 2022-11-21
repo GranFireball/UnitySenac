@@ -33,9 +33,10 @@ public class PlayerScript : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            if(inFloor)
+            if(inFloor == true)
             {
                 rb.AddForce(new Vector3(0.0f, 7.0f, 0.0f), ForceMode.Impulse);
+                inFloor = false;
             }
             
         }
@@ -48,7 +49,7 @@ public class PlayerScript : MonoBehaviour
             transform.position += new Vector3(0.0f, 0.0f, -speed);
         }*/
         transform.position += transform.forward * speed;
-        camera.transform.position = transform.position + new Vector3(0.0f, 1.2f, -1.0f);
+        camera.transform.position = transform.position + new Vector3(0.0f, 1.2f, -1.5f);
         camera.transform.rotation = transform.rotation;
 
     }
@@ -58,7 +59,7 @@ public class PlayerScript : MonoBehaviour
         if(collision.gameObject.tag == "Enemy")
         {
             Debug.Log("Colidiu");
-            transform.position = new Vector3(0.0f, 0.6f, -4.5f);
+            transform.position = new Vector3(0.0f, 0.6f, -19.5f);
             life--;
             txtLife.text = "Vidas: " + life;
             if (life == 0)
